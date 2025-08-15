@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Test D - Reading Answer Key</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .page-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: calc(100vh - 80px);
+            padding: 20px;
+        }
+
+        .answer-key-container {
+            width: 1200px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: 1px solid #e1e5e9;
+        }
+
+        .header {
+            background-color: #e8f4fd;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 20px;
+        }
+
+
+
+        .note-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px;
+            font-size: 14px;
+            color: #856404;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .answer-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .answer-table th {
+            background-color: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .answer-table td {
+            padding: 12px;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: top;
+        }
+
+        .answer-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .section-header {
+            background-color: #e9ecef;
+            font-weight: 600;
+            color: #495057;
+            padding: 15px 12px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .question-cell {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .answer-key-cell {
+            color: #28a745;
+            font-weight: 500;
+        }
+
+        .user-answer-cell {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-answer-text {
+            color: #6c757d;
+        }
+
+        .correct-indicator {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .correct {
+            color: #28a745;
+        }
+
+        .incorrect {
+            color: #dc3545;
+        }
+
+        .return-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .return-link:hover {
+            text-decoration: underline;
+        }
+
+        .no-answer {
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .score-summary {
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .score-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .score-header p {
+            margin: 5px 0;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .score-summary h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .score-details {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .score-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .score-row:last-child {
+            border-bottom: none;
+        }
+
+        .score-label {
+            font-weight: 500;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .score-value {
+            font-weight: 600;
+            color: #495057;
+            font-size: 16px;
+        }
+
+        .explanation-button-container {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .explanation-button {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .explanation-button:hover {
+            background: linear-gradient(135deg, #218838 0%, #1ea085 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .explanation-button:active {
+            transform: translateY(0px);
+        }
+
+        .feedback-section {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .feedback-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .feedback-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+
+        .feedback-question {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .feedback-quote {
+            background-color: #e8f4fd;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 8px 0;
+            font-style: italic;
+            color: #495057;
+        }
+
+        .feedback-explanation {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .feedback-header {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 6px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .question-cell .feedback-quote {
+            background-color: #e8f4fd;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            font-style: italic;
+            color: #495057;
+            font-size: 14px;
+        }
+
+        .question-cell .feedback-explanation {
+            color: #666;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+
+        /* New layout styles */
+        .question-detail-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 30px 0 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .question-detail {
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .question-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .original-text {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-style: italic;
+            color: #495057;
+            border-left: 4px solid #007bff;
+        }
+
+        .correct-answer {
+            background-color: #d4edda;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            color: #155724;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .checkmark {
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .quote-text {
+            background-color: #e8f4fd;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            color: #495057;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .explanation-text {
+            background-color: #fff3cd;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+        }
+
+        .feedback-text {
+            background-color: #e8f4fd;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            color: #495057;
+            border-left: 4px solid #17a2b8;
+            line-height: 1.5;
+        }
+
+        .feedback-text .feedback-quote {
+            background-color: #ffffff;
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-style: italic;
+            color: #495057;
+            border-left: 3px solid #007bff;
+        }
+
+        .feedback-text .feedback-explanation {
+            color: #495057;
+            line-height: 1.4;
+        }
+
+        .user-answer {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
+        }
+
+        .return-link-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+        }
+
+        .return-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: 1px solid #007bff;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .return-link:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .logo-container {
+                position: static !important;
+                top: auto !important;
+                left: auto !important;
+                width: 100% !important;
+                text-align: center;
+                padding: 15px;
+                margin-bottom: 10px;
+                border-radius: 0;
+                background-color: white;
+                border-bottom: 1px solid #e1e5e9;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                z-index: auto !important;
+            }
+
+            .logo-container img {
+                max-width: 120px !important;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .page-container {
+                padding: 15px 10px;
+                padding-top: 15px;
+                min-height: 100vh;
+            }
+
+            .answer-key-container {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                padding: 20px 15px;
+                border-radius: 12px;
+            }
+
+            .header {
+                padding: 15px;
+                margin-bottom: 20px;
+                border-radius: 8px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+                margin-bottom: 8px;
+                text-align: center;
+            }
+
+            .header p {
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .section-header {
+                font-size: 20px;
+                margin: 25px 0 15px 0;
+                padding: 12px 15px;
+                border-radius: 8px;
+            }
+
+            .question-detail-container {
+                margin-bottom: 20px;
+            }
+
+            .question-detail {
+                padding: 15px;
+                border-radius: 8px;
+                margin-bottom: 15px;
+            }
+
+            .question-label {
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 8px;
+                line-height: 1.4;
+            }
+
+            .original-text {
+                font-size: 15px;
+                line-height: 1.5;
+                margin-bottom: 12px;
+                padding: 12px;
+                border-radius: 6px;
+            }
+
+            .user-answer {
+                font-size: 15px;
+                padding: 12px;
+                border-radius: 6px;
+                margin-bottom: 12px;
+                word-wrap: break-word;
+            }
+
+            .correct-answer {
+                font-size: 15px;
+                padding: 12px;
+                border-radius: 6px;
+                margin-bottom: 12px;
+            }
+
+            .feedback-text {
+                font-size: 15px;
+                padding: 12px;
+                border-radius: 6px;
+            }
+
+            .feedback-text .feedback-quote {
+                padding: 10px;
+                border-radius: 6px;
+                margin-bottom: 10px;
+                font-size: 14px;
+                line-height: 1.4;
+            }
+
+            .feedback-text .feedback-explanation {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .return-link-container {
+                margin: 25px 0;
+                padding: 15px;
+            }
+
+            .return-link {
+                display: inline-block;
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                padding: 15px 20px;
+                font-size: 16px;
+                border-radius: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .logo-container {
+                padding: 12px;
+            }
+
+            .logo-container img {
+                max-width: 100px !important;
+            }
+
+            .page-container {
+                padding: 10px 5px;
+                padding-top: 10px;
+            }
+
+            .answer-key-container {
+                padding: 15px 12px;
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+                margin-bottom: 6px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .section-header {
+                font-size: 18px;
+                margin: 20px 0 12px 0;
+                padding: 10px 12px;
+            }
+
+            .question-detail {
+                padding: 12px;
+                margin-bottom: 12px;
+            }
+
+            .question-label {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .original-text {
+                font-size: 14px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            .user-answer {
+                font-size: 14px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            .correct-answer {
+                font-size: 14px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            .feedback-text {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .feedback-text .feedback-quote {
+                padding: 8px;
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+
+            .feedback-text .feedback-explanation {
+                font-size: 13px;
+            }
+
+            .return-link-container {
+                margin: 20px 0;
+                padding: 12px;
+            }
+
+            .return-link {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* Logo Styles */
+        .logo-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Add padding to prevent logo overlap with content */
+        .page-container {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- LOGO -->
+    <div class="logo-container">
+        <img src="Images/True North English Logo 2.0 (400 x 100 px).png" alt="True North English" style="max-width: 200px; height: auto;">
+    </div>
+
+    <div class="page-container">
+        <div class="answer-key-container">
+            <!-- HEADER -->
+            <div class="header">
+                <div class="header-title">Practice Test D - Reading Answer Key</div>
+            </div>
+
+            <!-- NOTE BOX -->
+            <div class="note-box">
+                <strong>NOTE:</strong> Use the back arrow in your browser to return to the page you just came from. The back arrow is located at the top left of your screen, next to the address bar.
+            </div>
+
+            <!-- SCORE SUMMARY -->
+            <div class="score-summary">
+                <div class="score-header">
+                    <p>Great work completing the homework 🎉! You can go through the breakdown videos for each question</p>
+                    <p>Write down your score in your CELPIP test tracker!</p>
+                </div>
+                
+                <h3>Your Score</h3>
+                
+                <div class="score-details">
+                    <div class="score-row">
+                        <span class="score-label">Name:</span>
+                        <span class="score-value" id="user-name">Hanford Shum</span>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Score:</span>
+                        <span class="score-value" id="score-percentage">0/19 Points (0%)</span>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Correct Answers:</span>
+                        <span class="score-value" id="correct-count">0</span>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Incorrect Answers:</span>
+                        <span class="score-value" id="incorrect-count">0</span>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Email:</span>
+                        <span class="score-value" id="user-email">truenorthenglishschool@gma...</span>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Unanswered:</span>
+                        <span class="score-value" id="unanswered-count">19</span>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Time Taken:</span>
+                        <span class="score-value" id="time-taken">0 secs</span>
+                    </div>
+                    <div class="score-row">
+                        <span class="score-label">Completion Time:</span>
+                        <span class="score-value" id="completion-time">N/A</span>
+                    </div>
+                </div>
+                
+                <div class="explanation-button-container">
+                    <button class="explanation-button">Watch Test Explanation</button>
+                </div>
+            </div>
+
+
+
+            <!-- CONTENT -->
+            <div class="content">
+                <div class="question-detail-container">
+                        <!-- READING PART 1 -->
+                    <div class="section-header">
+                        <h2>Reading Part 1: Reading Correspondence</h2>
+                    </div>
+                    
+                    <div class="question-detail">
+                        <div class="question-label">Question 1:</div>
+                        <div class="question-text">Sergiy and Ms. Wilkes</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q1">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            do not personally know each other
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"Although I have driven from work to the school to get Nadia a few times, we have not yet had a chance to formally meet."</div>
+                            <div class="feedback-explanation">They have not yet met each other.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 2:</div>
+                        <div class="question-text">We know for sure that Ms. Wilkes teaches</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q2">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            math
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"Such as having the students sing a song in order to learn one of your math lessons."</div>
+                            <div class="feedback-explanation">Ms. Wilkes teaches math.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 3:</div>
+                        <div class="question-text">The email indicates that Nadia</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q3">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            pays attention in Ms. Wilkes' class
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"Every evening at dinner, she tells us 'a Ms. Wilkes story.'"</div>
+                            <div class="feedback-explanation">Nadia enjoys and follows the class attentively.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 4:</div>
+                        <div class="question-text">Sergiy is likely writing this email</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q4">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            near the start of the school year
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"I know that the school year is just getting started..."</div>
+                            <div class="feedback-explanation">This suggests the school year has just begun.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 5:</div>
+                        <div class="question-text">Nadia seems to</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q5">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            be uncomfortable about French class.
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"She usually lowers her head and says she doesn't want to talk about it."</div>
+                            <div class="feedback-explanation">This shows discomfort with French.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 6:</div>
+                        <div class="question-text">Sergiy's main purpose for writing the email is to</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q6">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            obtain information and advice.
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"I'm hoping you can tell me how to get in touch with her... and suggestions for us to make sure Nadia doesn't fall behind."</div>
+                            <div class="feedback-explanation">Sergiy wants help and recommendations.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 7:</div>
+                        <div class="question-text">I did not realize that Nadia is such 7. ______ newcomer!</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q7">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            a recent
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"Our family immigrated to Canada from the Ukraine just last year."</div>
+                            <div class="feedback-explanation">This shows Nadia is new to the country.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 8:</div>
+                        <div class="question-text">As you say, her English is 8. ______.</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q8">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            fluent
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"Nadia has done very well with learning English since we arrived."</div>
+                            <div class="feedback-explanation">She's proficient in English.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 9:</div>
+                        <div class="question-text">I appreciate that you are willing to 9. ______ to get her some extra help.</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q9">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            spend money
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"Some families hire private tutors or sign their kids up for after-school lessons."</div>
+                            <div class="feedback-explanation">This implies spending money.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 10:</div>
+                        <div class="question-text">I'm surprised our main office has 10. ______.</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q10">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            not been very helpful
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"I have called the school's main office and spoken with someone..."</div>
+                            <div class="feedback-explanation">But he didn't get the teacher's name — shows lack of help.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 11:</div>
+                        <div class="question-text">In the meantime, I thank you for 11. ______!</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q11">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            your kind words about my efforts to engage the class
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-quote">"Nadia has spoken very highly of you since the first day of school..."</div>
+                            <div class="feedback-explanation">Sergiy complimented Ms. Wilkes on her teaching style.</div>
+                        </div>
+                    </div>
+                    <div class="return-link-container">
+                                <a href="02_Reading_Part1_Email_Correspondence.html" class="return-link">Return to the beginning of Part 1</a>
+                    </div>
+
+                        <!-- READING PART 2 -->
+                    <div class="section-header">
+                        <h2>Reading Part 2: Reading to Apply a Diagram</h2>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 1:</div>
+                        <div class="question-text">The research revealed _______.</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q1-p2">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            patterns in beverage choices
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-explanation">The infographic compares data from 2016 with the last ten years, discussing "found some interesting trends!" The infographic presents statistical data about the beverage preferences of Canadians in 2016, highlighting trends and changes.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 2:</div>
+                        <div class="question-text">I think the fact that _______ really says something about our country's trend towards healthier choices.</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q2-p2">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            sweet drinks are the least popular
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-explanation">"Tea drinkers are down 5% again this year." The section titled "Still Not Tea Time" notes a decrease in the popularity of tea drinks, implying a trend away from sweetened beverages like traditional flavored teas.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 3:</div>
+                        <div class="question-text">Three of the beverage choices mention _______ in their explanations.</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q3-p2">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            money
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-explanation">Descriptions like "Health and financial benefits were named as top reasons" and "Availability and cost are thought to be key growth factors" tie into monetary concerns. The infographic mentions cost or financial considerations multiple times across different beverage choices, indicating its relevance.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 4:</div>
+                        <div class="question-text">Although the information may be written a little _______.</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q4-p2">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            informally
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-explanation">Use of friendly headers like "Hydration Nation" and "Caffeinated Canucks" implies an informal tone. The language and format of the infographic suggest a casual, easily accessible style rather than a formal statistical report.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 5:</div>
+                        <div class="question-text">Do you think it is OK to use something that is based on _______?</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q5-p2">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            a survey of individual Canadians
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-explanation">"We asked 10,000 Canadians to tell us what they are drinking in 2016." The infographic is based on a survey conducted on 10,000 Canadians to gauge their drinking preferences, making it a primary source of data from individuals.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 6:</div>
+                        <div class="question-text">Tie most likely sent this email on a</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q6-p2">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            Saturday
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-explanation">"How's your weekend going?" implies it is currently the weekend. The email is likely sent on a weekend day given the casual greeting about the weekend and the urgency of needing a response before Thursday.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 7:</div>
+                        <div class="question-text">Tie would like Kevin's</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q7-p2">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            opinion
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-explanation">"I was wondering if you thought this infographic could be useful for our group presentation..." Tie is asking for Kevin's thoughts on the suitability and relevance of the infographic for their upcoming presentation, indicating a request for his opinion.</div>
+                        </div>
+                    </div>
+                    <div class="question-detail">
+                        <div class="question-label">Question 8:</div>
+                        <div class="question-text">How does Tie feel about using the infographic in the presentation?</div>
+                        
+                        <div class="question-label">Your Answer:</div>
+                        <div class="user-answer" id="user-q8-p2">Not answered</div>
+                        
+                        <div class="question-label">Correct Answer:</div>
+                        <div class="correct-answer">
+                            <span class="checkmark">✓</span>
+                            unsure
+                        </div>
+                        
+                        <div class="question-label">Feedback:</div>
+                        <div class="feedback-text">
+                            <div class="feedback-explanation">Questions like "Do you think it is OK to use something that is based on a survey of individual Canadians?" exhibit hesitance. Tie questions the appropriateness of using the infographic for their academic presentation, showing uncertainty about its suitability.</div>
+                        </div>
+                    </div>
+                    <div class="return-link-container">
+                                <a href="03_Reading_Part2_Reading_to_Apply_Diagram.html" class="return-link">Return to the beginning of Part 2</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to load participant information
+        function loadParticipantInfo() {
+            const firstName = localStorage.getItem('participantFirstName') || 'Hanford';
+            const lastName = localStorage.getItem('participantLastName') || 'Shum';
+            const email = localStorage.getItem('participantEmail') || 'truenorthenglishschool@gma...';
+            
+            document.getElementById('user-name').textContent = `${firstName} ${lastName}`;
+            document.getElementById('user-email').textContent = email;
+        }
+
+        // Function to calculate and display score statistics
+        function calculateScore() {
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unansweredCount = 0;
+            const totalQuestions = 19; // 11 from page 1 + 8 from page 2
+
+            // Check answers from page 1
+            console.log('=== PART 1 ANSWER CHECKING ===');
+            for (let i = 1; i <= 11; i++) {
+                const userAnswer = localStorage.getItem(`q${i}`);
+                if (userAnswer) {
+                    // Get correct answer from the answer key
+                    const correctAnswers = {
+                        'q1': 'do not personally know each other.',
+                        'q2': 'math.',
+                        'q3': 'pays attention in Ms. Wilkes\' class.',
+                        'q4': 'near the start of the school year.',
+                        'q5': 'be uncomfortable about French class.',
+                        'q6': 'obtain information and advice.',
+                        'q7': 'a recent',
+                        'q8': 'fluent',
+                        'q9': 'spend money',
+                        'q10': 'not been very helpful',
+                        'q11': 'your kind words about my efforts to engage the class'
+                    };
+                    
+                    const isCorrect = userAnswer.trim() === correctAnswers[`q${i}`];
+                    console.log(`Q${i}: User="${userAnswer}" | Correct="${correctAnswers[`q${i}`]}" | Match=${isCorrect}`);
+                    
+                    if (isCorrect) {
+                        correctCount++;
+                    } else {
+                        incorrectCount++;
+                    }
+                } else {
+                    console.log(`Q${i}: Not answered`);
+                    unansweredCount++;
+                }
+            }
+
+            // Check answers from page 2
+            console.log('=== PART 2 ANSWER CHECKING ===');
+            for (let i = 1; i <= 8; i++) {
+                const userAnswer = localStorage.getItem(`q${i}-p2`);
+                if (userAnswer) {
+                    // Get correct answer from the answer key
+                    const correctAnswers = {
+                        'q1-p2': 'patterns in beverage choices',
+                        'q2-p2': 'sweet drinks are the least popular',
+                        'q3-p2': 'money',
+                        'q4-p2': 'informally',
+                        'q5-p2': 'a survey of individual Canadians',
+                        'q6-p2': 'Saturday',
+                        'q7-p2': 'opinion',
+                        'q8-p2': 'unsure'
+                    };
+                    
+                    const isCorrect = userAnswer.trim() === correctAnswers[`q${i}-p2`];
+                    console.log(`Q${i+11}: User="${userAnswer}" | Correct="${correctAnswers[`q${i}-p2`]}" | Match=${isCorrect}`);
+                    
+                    if (isCorrect) {
+                        correctCount++;
+                    } else {
+                        incorrectCount++;
+                    }
+                } else {
+                    console.log(`Q${i+11}: Not answered`);
+                    unansweredCount++;
+                }
+            }
+
+            // Calculate percentage - count unanswered as incorrect
+            const totalIncorrect = incorrectCount + unansweredCount;
+            const percentage = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+            
+            console.log('=== FINAL SCORE CALCULATION ===');
+            console.log(`Correct: ${correctCount}, Incorrect: ${incorrectCount}, Unanswered: ${unansweredCount}`);
+            console.log(`Total Incorrect (including unanswered): ${totalIncorrect}`);
+            console.log(`Total: ${totalQuestions}, Percentage: ${percentage}%`);
+
+            // Update score display
+            document.getElementById('score-percentage').textContent = `${correctCount}/${totalQuestions} Points (${percentage}%)`;
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('incorrect-count').textContent = totalIncorrect;
+            document.getElementById('unanswered-count').textContent = unansweredCount;
+
+            // Get time taken from localStorage or set default
+            const timeTaken = localStorage.getItem('timeTaken') || '0 minutes';
+            document.getElementById('time-taken').textContent = timeTaken;
+            
+            // Get completion time from localStorage
+            const testEndTime = localStorage.getItem('testEndTime');
+            if (testEndTime) {
+                const completionTime = new Date(testEndTime).toLocaleString();
+                document.getElementById('completion-time').textContent = completionTime;
+            }
+        }
+
+        // Function to load user answers from localStorage
+        function loadUserAnswers() {
+            console.log('Loading user answers...');
+            
+            // Load answers from page 1
+            for (let i = 1; i <= 11; i++) {
+                const userAnswer = localStorage.getItem(`q${i}`);
+                const userAnswerElement = document.getElementById(`user-q${i}`);
+                
+                console.log(`Checking q${i}:`, userAnswer, userAnswerElement);
+                
+                if (userAnswerElement) {
+                    // Get correct answer from the correct answer element
+                    const questionDetail = userAnswerElement.closest('.question-detail');
+                    const correctAnswerElement = questionDetail.querySelector('.correct-answer');
+                    const correctAnswer = correctAnswerElement.textContent.replace('✓', '').trim();
+                    
+                    if (userAnswer) {
+                        userAnswerElement.textContent = userAnswer;
+                        console.log(`q${i} - User: "${userAnswer}", Correct: "${correctAnswer}"`);
+                        
+                        // Add visual indicator to user answer
+                        if (userAnswer.trim() === correctAnswer) {
+                            userAnswerElement.style.backgroundColor = '#d4edda';
+                            userAnswerElement.style.color = '#155724';
+                            userAnswerElement.style.borderColor = '#c3e6cb';
+                            userAnswerElement.innerHTML = '<span style="color: #28a745; font-weight: bold; margin-right: 8px;">✓</span>' + userAnswer;
+                        } else {
+                            userAnswerElement.style.backgroundColor = '#f8d7da';
+                            userAnswerElement.style.color = '#721c24';
+                            userAnswerElement.style.borderColor = '#f5c6cb';
+                            userAnswerElement.innerHTML = '<span style="color: #dc3545; font-weight: bold; margin-right: 8px;">✗</span>' + userAnswer;
+                        }
+                    } else {
+                        // Handle unanswered questions - show as incorrect
+                        userAnswerElement.textContent = "Not answered";
+                        userAnswerElement.style.backgroundColor = '#f8d7da';
+                        userAnswerElement.style.color = '#721c24';
+                        userAnswerElement.style.borderColor = '#f5c6cb';
+                        userAnswerElement.style.fontStyle = 'italic';
+                        userAnswerElement.innerHTML = '<span style="color: #dc3545; font-weight: bold; margin-right: 8px;">✗</span>Not answered';
+                        console.log(`q${i} - Not answered, marked as incorrect`);
+                    }
+                }
+            }
+            
+            // Load answers from page 2
+            for (let i = 1; i <= 8; i++) {
+                const userAnswer = localStorage.getItem(`q${i}-p2`);
+                const userAnswerElement = document.getElementById(`user-q${i}-p2`);
+                
+                console.log(`Checking q${i}-p2:`, userAnswer, userAnswerElement);
+                
+                if (userAnswerElement) {
+                    // Get correct answer from the correct answer element
+                    const questionDetail = userAnswerElement.closest('.question-detail');
+                    const correctAnswerElement = questionDetail.querySelector('.correct-answer');
+                    const correctAnswer = correctAnswerElement.textContent.replace('✓', '').trim();
+                    
+                    if (userAnswer) {
+                        userAnswerElement.textContent = userAnswer;
+                        console.log(`q${i}-p2 - User: "${userAnswer}", Correct: "${correctAnswer}"`);
+                        
+                        // Add visual indicator to user answer
+                        if (userAnswer.trim() === correctAnswer) {
+                            userAnswerElement.style.backgroundColor = '#d4edda';
+                            userAnswerElement.style.color = '#155724';
+                            userAnswerElement.style.borderColor = '#c3e6cb';
+                            userAnswerElement.innerHTML = '<span style="color: #28a745; font-weight: bold; margin-right: 8px;">✓</span>' + userAnswer;
+                        } else {
+                            userAnswerElement.style.backgroundColor = '#f8d7da';
+                            userAnswerElement.style.color = '#721c24';
+                            userAnswerElement.style.borderColor = '#f5c6cb';
+                            userAnswerElement.innerHTML = '<span style="color: #dc3545; font-weight: bold; margin-right: 8px;">✗</span>' + userAnswer;
+                        }
+                    } else {
+                        // Handle unanswered questions - show as incorrect
+                        userAnswerElement.textContent = "Not answered";
+                        userAnswerElement.style.backgroundColor = '#f8d7da';
+                        userAnswerElement.style.color = '#721c24';
+                        userAnswerElement.style.borderColor = '#f5c6cb';
+                        userAnswerElement.style.fontStyle = 'italic';
+                        userAnswerElement.innerHTML = '<span style="color: #dc3545; font-weight: bold; margin-right: 8px;">✗</span>Not answered';
+                        console.log(`q${i}-p2 - Not answered, marked as incorrect`);
+                    }
+                }
+            }
+        }
+
+        // Load user answers when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Answer Key page loaded');
+            loadParticipantInfo();
+            loadUserAnswers();
+            calculateScore();
+            
+            // Debug: Check what's in localStorage
+            console.log('localStorage contents:');
+            for (let i = 1; i <= 11; i++) {
+                const answer = localStorage.getItem(`q${i}`);
+                console.log(`q${i}:`, answer);
+            }
+            for (let i = 1; i <= 8; i++) {
+                const answer = localStorage.getItem(`q${i}-p2`);
+                console.log(`q${i}-p2:`, answer);
+            }
+        });
+
+
+
+        // Handle Explanation button click
+        document.querySelector('.explanation-button').addEventListener('click', function() {
+            window.open('https://www.skool.com/celpipexperts/classroom/8e176082?md=0e5b5f14f6454e7081f0319a9c0ce4ab', '_blank');
+        });
+    </script>
+</body>
+</html> 
